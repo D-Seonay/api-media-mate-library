@@ -7,6 +7,7 @@ import api_media_mate_library.model.User;
 import api_media_mate_library.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -26,6 +27,10 @@ public class UserService {
     public User getUserById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
+    }
+
+    public Optional<User> getUserByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 
     // ➡️ CREATE USER

@@ -10,7 +10,7 @@ import api_media_mate_library.model.Status;
 import api_media_mate_library.service.ItemService;
 
 @RestController
-@RequestMapping("/items")
+@RequestMapping("/api/items")
 public class ItemController {
 
     private final ItemService itemService;

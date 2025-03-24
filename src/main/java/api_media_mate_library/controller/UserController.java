@@ -1,14 +1,16 @@
 package api_media_mate_library.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import api_media_mate_library.model.User;
 import api_media_mate_library.service.UserService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UserController {
 
     private final UserService userService;
@@ -24,10 +26,18 @@ public class UserController {
     }
 
     // ➡️ GET USER BY ID
-    @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
-        return userService.getUserById(id);
+    @GetMapping("/id/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+        Optional<User> user = Optional.empty();
+        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+    
+    @GetMapping("/username/{username}")
+    public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
+        Optional<User> user = userService.getUserByUsername(username);
+        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+    
 
     // ➡️ CREATE USER
     @PostMapping

@@ -2,8 +2,6 @@ package api_media_mate_library.model;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
-import io.micrometer.common.lang.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -39,4 +37,3 @@ public class Item {
     @Column(nullable = false)
     private Status status = Status.NOT_STARTED;
 }
-

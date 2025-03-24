@@ -9,7 +9,7 @@ import api_media_mate_library.service.CategoryService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/category")
+@RequestMapping("/api/category")
 public class CategoryController {
 
     private final CategoryService categoryService;

@@ -41,8 +41,10 @@ public class UserService {
     // ➡️ UPDATE USER
     public User updateUser(Long id, User updatedUser) {
         User existingUser = getUserById(id);
+        existingUser.setName(updatedUser.getName());
         existingUser.setUsername(updatedUser.getUsername());
         existingUser.setEmail(updatedUser.getEmail());
+        existingUser.setBio(updatedUser.getBio());
         existingUser.setPassword(updatedUser.getPassword());
         existingUser.setAvatar(updatedUser.getAvatar());
         return userRepository.save(existingUser);
